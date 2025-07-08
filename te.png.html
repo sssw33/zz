@@ -1,31 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Webhook Test</title>
-</head>
-<body>
-  <h1>Send POST to webhook.site</h1>
-  <button id="sendBtn">Send POST</button>
-  <pre id="output"></pre>
 
-  <script>
-    document.getElementById('sendBtn').addEventListener('click', () => {
-      fetch('https://webhook.site/26a382d3-2924-4243-aa25-ba44f043c3ee', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ test: 'Hello from GitHub Pages' })
-      })
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('output').textContent = '✅ POST sent successfully!';
-      })
-      .catch(error => {
-        document.getElementById('output').textContent = '❌ Error: ' + error;
-      });
-    });
-  </script>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع حجز كشف طبي للدكتور احمد هاني</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #f32121;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: rgb(244, 17, 17);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #e0e0e0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>موقع حجز كشف طبي للدكتور احمد هاني</h1>
+    </header>
+
+    <main>
+        <h2>نموذج الحجز</h2>
+        <form action="#" method="POST">
+            <label for="name">الاسم الكامل:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">البريد الإلكتروني:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">رقم الهاتف:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="department">القسم الطبي:</label>
+            <select id="department" name="department" required>
+                <option value="">-- اختر القسم --</option>
+                <option value="باطنة">باطنة</option>
+                <option value="أطفال">أطفال</option>
+                <option value="عيون">عيون</option>
+                <option value="جلدية">جلدية</option>
+            </select>
+
+            <label for="date">تاريخ الحجز:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="notes">ملاحظات إضافية:</label>
+            <textarea id="notes" name="notes" rows="4"></textarea>
+
+            <button type="submit">احجز الآن</button>
+        </form>
+    </main>
+
+    <footer>
+        &copy; 2025 موقع الحجز الطبي. جميع الحقوق محفوظة.
+    </footer>
 </body>
+
 </html>
